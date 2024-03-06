@@ -148,9 +148,11 @@ function updateTask() {
   closeEditFormModal();
 }
 
-
-
-
+function deleteTask(button) {
+  if (confirm("Are you sure you want to delete this task?")) {
+    $(button).closest("tr").remove();
+  }
+}
 
 $(function() {
   $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
