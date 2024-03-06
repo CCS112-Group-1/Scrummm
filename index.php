@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,28 +8,34 @@
   <title>Task Manager</title>
   <link rel="stylesheet" href="student.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 
   <h2>Task Manager</h2>
-<input type="button" class="button button-add" value="Add Task" onclick="openAddModal()">
+
+  <input type="button" class="button button-add" value="Add Task" onclick="openAddModal()">
+
 <table id="taskTable">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Due Date</th>
-      <th>Status</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody id="taskList">
-    
-  </tbody>
-</table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="taskList">
+
+    </tbody>
+  </table>
+
+
+
 
 <div id="editFormModal" class="modal">
   <div class="modal-content">
@@ -102,9 +110,10 @@ function addTask() {
     "<td>" + taskData.description + "</td>" +
     "<td>" + taskData.dueDate + "</td>" +
     "<td>" + taskData.status + "</td>" +
-    "<td><button class='button-edit' onclick='openEditForm(this)'>Edit</button></td>" +
-    "<td><button class='button-delete' onclick='deleteTask(this)'>Delete</button></td>" +
-    "</tr>");
+     
+"<td><button class='button-edit' onclick='openEditForm(this)'>Edit</button>" +
+        "<button class='button-delete' onclick='deleteTask(this)'>Delete</button></td>" +
+        "</tr>");
   
   
 
