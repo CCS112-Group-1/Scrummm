@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
 </head>
 <body>
 
-<h2>Task Manager</h2>
+  <h2>Task Manager</h2>
 <input type="button" class="button button-add" value="Add Task" onclick="openAddModal()">
 <table id="taskTable">
   <thead>
@@ -26,16 +25,7 @@
     </tr>
   </thead>
   <tbody id="taskList">
-    <?php foreach ($tasks as $task): ?>
-      <tr>
-        <td><?php echo $task['title']; ?></td>
-        <td><?php echo $task['description']; ?></td>
-        <td><?php echo $task['due_date']; ?></td>
-        <td><?php echo $task['status']; ?></td>
-        <td><button class='button-edit' onclick='openEditForm(this)'>Edit</button></td>
-        <td><button class='button-delete' onclick='deleteTask(this)'>Delete</button></td>
-      </tr>
-    <?php endforeach; ?>
+    
   </tbody>
 </table>
 
@@ -94,45 +84,26 @@ function closeEditFormModal() {
   $("#editFormModal").hide();
 }
 
-function openEditForm(button) {
-  var row = $(button).closest("tr");
-  editRowIndex = row.index();
-  $("#editTitleModal").val(row.find("td:eq(0)").text());
-  $("#editDescriptionModal").val(row.find("td:eq(1)").text());
-  $("#editDueDateModal").val(row.find("td:eq(2)").text());
-  $("#editStatusModal").val(row.find("td:eq(3)").text());
-
-  openEditFormModal();
-}
-
-function updateTask() {
-  var row = $("#taskList tr:eq(" + editRowIndex + ")");
-  
-  var editedTaskData = {
-    title: $("#editTitleModal").val(),
-    description: $("#editDescriptionModal").val(),
-    dueDate: $("#editDueDateModal").val(),
-    status: $("#editStatusModal").val(),
+function addTask() {
+  var taskData = {
+    title: $("#titleModal").val(),
+    description: $("#descriptionModal").val(),
+    dueDate: $("#dueDateModal").val(),
+    status: $("#statusModal").val(),
   };
 
-  if (!editedTaskData.title || !editedTaskData.description || !editedTaskData.dueDate) {
-    alert("Please fill in all required fields.");
-    return;
-  }
+  
+  
 
-  row.find("td:eq(0)").text(editedTaskData.title);
-  row.find("td:eq(1)").text(editedTaskData.description);
-  row.find("td:eq(2)").text(editedTaskData.dueDate);
-  row.find("td:eq(3)").text(editedTaskData.status);
-
-  closeEditFormModal();
+  $("#taskFormModal")[0].reset();
+  closeAddModal();
 }
 
-function deleteTask(button) {
-  if (confirm("Are you sure you want to delete this task?")) {
-    $(button).closest("tr").remove();
-  }
-}
+
+
+
+
+
 
 $(function() {
   $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
@@ -142,3 +113,5 @@ $(function() {
 </body>
 </html>
 
+
+  
