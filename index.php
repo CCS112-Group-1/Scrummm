@@ -114,6 +114,40 @@ function addTask() {
 
 
 
+function openEditForm(button) {
+  var row = $(button).closest("tr");
+  editRowIndex = row.index();
+  $("#editTitleModal").val(row.find("td:eq(0)").text());
+  $("#editDescriptionModal").val(row.find("td:eq(1)").text());
+  $("#editDueDateModal").val(row.find("td:eq(2)").text());
+  $("#editStatusModal").val(row.find("td:eq(3)").text());
+
+  openEditFormModal();
+}
+
+function updateTask() {
+  var row = $("#taskList tr:eq(" + editRowIndex + ")");
+  
+  var editedTaskData = {
+    title: $("#editTitleModal").val(),
+    description: $("#editDescriptionModal").val(),
+    dueDate: $("#editDueDateModal").val(),
+    status: $("#editStatusModal").val(),
+  };
+
+  if (!editedTaskData.title || !editedTaskData.description || !editedTaskData.dueDate) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  row.find("td:eq(0)").text(editedTaskData.title);
+  row.find("td:eq(1)").text(editedTaskData.description);
+  row.find("td:eq(2)").text(editedTaskData.dueDate);
+  row.find("td:eq(3)").text(editedTaskData.status);
+
+  closeEditFormModal();
+}
+
 
 
 
