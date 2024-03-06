@@ -92,6 +92,19 @@ function addTask() {
     status: $("#statusModal").val(),
   };
 
+  if (!taskData.title || !taskData.description || !taskData.dueDate) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  $("#taskList").append("<tr>" +
+    "<td>" + taskData.title + "</td>" +
+    "<td>" + taskData.description + "</td>" +
+    "<td>" + taskData.dueDate + "</td>" +
+    "<td>" + taskData.status + "</td>" +
+    "<td><button class='button-edit' onclick='openEditForm(this)'>Edit</button></td>" +
+    "<td><button class='button-delete' onclick='deleteTask(this)'>Delete</button></td>" +
+    "</tr>");
   
   
 
